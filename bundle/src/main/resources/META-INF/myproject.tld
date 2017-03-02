@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>A tag library for My practice tag libraries</description>
+	<tlib-version>1.1</tlib-version>
+	<short-name>myProject</short-name>
+	<uri>http://www.myProject.com/taglibs/common/1.1</uri>
+
+	<tag>
+		<description>Custom Tag files</description>
+		<name>customTag</name>
+		<tag-class>com.aem.tags.CustomTagSupport</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	
+	<function>
+		<name>parseJsonArray</name>
+		<function-class>com.aem.tags.JsonArrayParserTag</function-class>
+		<function-signature>java.util.Map parseJson(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>parseJson</name>
+		<function-class>com.aem.tags.JsonParserTag</function-class>
+		<function-signature>java.util.Map parseJson(java.lang.String)</function-signature>
+	</function>
+
+
+
+</taglib>

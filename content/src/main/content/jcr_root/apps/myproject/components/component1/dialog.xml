@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    height="{Long}500"
+    width="{Long}800"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <dailogDetails
+                jcr:primaryType="cq:Panel"
+                title="Practice Example">
+                <items jcr:primaryType="cq:WidgetCollection">
+	                <practiceName
+	                        jcr:primaryType="cq:Widget"
+	                        fieldLabel="Included Plan Heading"
+	                        name="./practiceName"
+	                        xtype="textfield">
+	                </practiceName>
+	               	<practiceHeading
+	                        jcr:primaryType="cq:Widget"
+	                        fieldLabel="Included Cost Heading"
+	                        name="./practiceHeading"
+	                        xtype="textfield">
+	                </practiceHeading>
+					<tabs
+	                        jcr:primaryType="cq:Widget"
+	                        addItemLabel="Add Outside Of Allowance Details"
+	                        fieldDescription="Add plan and cost with description"
+	                        name="./excludedPlanDetails"
+	                        typeHint="String"
+	                        xtype="multifield">
+	                        <fieldConfig
+	                            jcr:primaryType="nt:unstructured"
+	                            xtype="apps.ee-web.widgets.multiTripleTextField"/>
+	                </tabs>
+                </items>
+            </dailogDetails>
+
+        </items>
+    </items>
+    <listeners
+           jcr:primaryType="nt:unstructured"
+           beforesubmit="function(){      
+                           var practiceName = this.find('name', './practiceName')[0];
+                           var practiceHeading = this.find('name', './practiceHeading')[0];
+                           if(practiceName.getValue().length &lt; 0){
+                                 CQ.Ext.Msg.show(
+									{title: 'practiceName',  msg: 'practiceName should not be empty ',icon:CQ.Ext.MessageBox.WARNING,buttons: CQ.Ext.Msg.OK}
+                                                                   );return false;
+                           }
+						   
+						    if((practiceHeading.getValue().length &lt; 0 )){
+                                 CQ.Ext.Msg.show(
+									{title: 'PracticeHeading',  msg: 'Practice Heading must not be empty',icon:CQ.Ext.MessageBox.WARNING,buttons: CQ.Ext.Msg.OK}
+                                                                   );return false;
+                           }
+                           
+                           }"/>   
+    
+</jcr:root>
